@@ -19,14 +19,14 @@ namespace M3UParser.Utils
 
 			try
 			{
-				if (!line.Contains(property)) throw new ArgumentException(
-					$"Property {property} not found in line: {line}.");
+				if (!line.Contains(property))
+					throw new ArgumentException(
+						$"Property {property} not found in line: {line}.");
 
 				var propertyStartIndex = line.Substring(line.IndexOf(property) + property.Length + 2);
 				var propertyLastIndex = propertyStartIndex.IndexOf("\"");
-	
-				return propertyStartIndex.Substring(0, propertyLastIndex);
 
+				return propertyStartIndex.Substring(0, propertyLastIndex);
 			}
 			catch
 			{
