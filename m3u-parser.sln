@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26124.0
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "m3u-parser", "M3uParser\m3u-parser.csproj", "{346BF3CA-8E80-4233-8859-CAFF7BF6F801}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M3uParser.Tests", "M3uParser.Tests\M3uParser.Tests.csproj", "{569F374A-193F-4FE3-9B15-7C70A60DAAD0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{346BF3CA-8E80-4233-8859-CAFF7BF6F801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{346BF3CA-8E80-4233-8859-CAFF7BF6F801}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{346BF3CA-8E80-4233-8859-CAFF7BF6F801}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{346BF3CA-8E80-4233-8859-CAFF7BF6F801}.Debug|x64.Build.0 = Debug|Any CPU
+		{346BF3CA-8E80-4233-8859-CAFF7BF6F801}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{346BF3CA-8E80-4233-8859-CAFF7BF6F801}.Debug|x86.Build.0 = Debug|Any CPU
+		{346BF3CA-8E80-4233-8859-CAFF7BF6F801}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{346BF3CA-8E80-4233-8859-CAFF7BF6F801}.Release|Any CPU.Build.0 = Release|Any CPU
+		{346BF3CA-8E80-4233-8859-CAFF7BF6F801}.Release|x64.ActiveCfg = Release|Any CPU
+		{346BF3CA-8E80-4233-8859-CAFF7BF6F801}.Release|x64.Build.0 = Release|Any CPU
+		{346BF3CA-8E80-4233-8859-CAFF7BF6F801}.Release|x86.ActiveCfg = Release|Any CPU
+		{346BF3CA-8E80-4233-8859-CAFF7BF6F801}.Release|x86.Build.0 = Release|Any CPU
+		{569F374A-193F-4FE3-9B15-7C70A60DAAD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{569F374A-193F-4FE3-9B15-7C70A60DAAD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{569F374A-193F-4FE3-9B15-7C70A60DAAD0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{569F374A-193F-4FE3-9B15-7C70A60DAAD0}.Debug|x64.Build.0 = Debug|Any CPU
+		{569F374A-193F-4FE3-9B15-7C70A60DAAD0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{569F374A-193F-4FE3-9B15-7C70A60DAAD0}.Debug|x86.Build.0 = Debug|Any CPU
+		{569F374A-193F-4FE3-9B15-7C70A60DAAD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{569F374A-193F-4FE3-9B15-7C70A60DAAD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{569F374A-193F-4FE3-9B15-7C70A60DAAD0}.Release|x64.ActiveCfg = Release|Any CPU
+		{569F374A-193F-4FE3-9B15-7C70A60DAAD0}.Release|x64.Build.0 = Release|Any CPU
+		{569F374A-193F-4FE3-9B15-7C70A60DAAD0}.Release|x86.ActiveCfg = Release|Any CPU
+		{569F374A-193F-4FE3-9B15-7C70A60DAAD0}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

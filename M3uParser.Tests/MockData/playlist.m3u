@@ -1,0 +1,12 @@
+#EXTM3U
+
+###
+# Kanalai
+###
+
+#EXTINF:-1 group-title="titleOne" tvg-id="1" tvg-name="TV Channel1" tvg-logo="https://localhost1" tvg-logo-small="https://localhost1small" parent-code="1234",TV Channel1
+udp://@111.222.33.4:1234
+#EXTINF:-1 group-title="titleTwo" tvg-chno="2" tvg-logo="https://localhost2",TV Channel1
+udp://@111.222.33.4:1234
+#EXTINF:-1 group-title="titleThree" tvg-chno="3" tvg-logo="https://localhost3",TV Channel1
+udp://@111.222.33.4:1234
