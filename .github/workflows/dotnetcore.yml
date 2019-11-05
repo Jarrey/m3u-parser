@@ -16,6 +16,6 @@ jobs:
     - name: Test with dotnet
       run: dotnet test
     - name: Build NuGet Package
-      run: dotnet pack ./src/M3uParser/m3u-parser.csproj --configuration Release -o NuGetPackages
+      run: dotnet pack ./M3uParser/m3u-parser.csproj --configuration Release -o NuGetPackages
     - name: Deploy NuGet Package
-      run: dotnet nuget push ./src/M3uParser/NuGetPackages/m3u-parser.1.0.0.nupkg -k $NUGET_API_KEY -s https://api.nuget.org/v3/index.json
+      run: dotnet nuget push ./M3uParser/NuGetPackages/m3u-parser.1.0.0.nupkg -k $NUGET_API_KEY -s https://api.nuget.org/v3/index.json
