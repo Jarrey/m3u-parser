@@ -1,0 +1,21 @@
+name: .NET Core
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.2.108
+    - name: Build with dotnet --configuration Release
+      run: dotnet restore
+    - name: Test with dotnet
+      run: dotnet test
+    - name: Build NuGet Package
+      run: dotnet pack ./src/M3uParser/m3u-parser.csproj --configuration Release -o NuGetPackages
+    - name: Deploy NuGet Package
+      run: dotnet nuget push ./src/M3uParser/NuGetPackages/m3u-parser.1.0.0.nupkg -k $NUGET_API_KEY -s https://api.nuget.org/v3/index.json
