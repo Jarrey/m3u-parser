@@ -15,10 +15,8 @@ jobs:
       run: dotnet restore
     - name: Test with dotnet
       run: dotnet test
-    - name: ls M3uParser/bin/Release
-      run: ls -la M3uParser/bin/Release
-    - name: ls M3uParser/bin/Release/netstandard2.0
-      run: ls -la M3uParser/bin/Release/netstandard2.0
+    - name: ls
+      run: ls -la
     - name: Build NuGet Package
       run: dotnet pack M3uParser/m3u-parser.csproj --configuration Release -o NuGetPackages
     - name: Deploy NuGet Package
