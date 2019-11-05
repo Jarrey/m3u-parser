@@ -7,14 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: ls
-      run: ls -la M3uParser
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.0.100
     - name: Build with dotnet --configuration Release
       run: dotnet restore
+    - name: ls
+      run: ls -la M3uParser
     - name: Test with dotnet
       run: dotnet test
     - name: Build NuGet Package
