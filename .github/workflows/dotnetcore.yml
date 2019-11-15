@@ -38,5 +38,5 @@ jobs:
         run: ls -la M3uParser
       - name: ls M3uParser.Tests
         run: ls -la M3uParser.Tests
-      # - name: Deploy NuGet Package
-      #   run: dotnet nuget push M3uParser/NuGetPackages/m3u-parser.1.0.0.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
+      - name: Deploy NuGet Package
+        run: dotnet nuget push M3uParser/NuGetPackages/m3u-parser.1.0.0.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
