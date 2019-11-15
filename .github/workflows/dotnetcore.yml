@@ -7,19 +7,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Sonarscanner for dotnet
-        uses: Secbyte/dotnet-sonarscanner@v1.2
-        with:
-          buildCommand: dotnet build .
-          projectKey: Acidfabric_m3u-parser
-          projectName: m3u-parser
-          sonarOrganisation: CharlieOnAcid
-          verbose: "true"
-          openCoverPaths: "tests/coverage.opencover.xml"
-          coverageExclusions: "**test*.cs"
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Sonarscanner for dotnet
+      #   uses: Secbyte/dotnet-sonarscanner@v1.2
+      #   with:
+      #     buildCommand: dotnet build .
+      #     projectKey: Acidfabric_m3u-parser
+      #     projectName: m3u-parser
+      #     sonarOrganisation: CharlieOnAcid
+      #     verbose: "true"
+      #     openCoverPaths: "tests/coverage.opencover.xml"
+      #     coverageExclusions: "**test*.cs"
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
