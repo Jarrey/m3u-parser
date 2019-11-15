@@ -4,11 +4,12 @@
     <PackageId>m3u-parser</PackageId>
     <Title>M3U Parser</Title>
     <PackageDescription>Package for parsing m3u playlist</PackageDescription>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Karolis Arbaciauskas</Authors>
     <Company>Charlie on Acid</Company>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>m3u_parser</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageReleaseNotes>Version 1.0.1 - Added attributes: tvg-id, tvg-name, group-title, parent-code, tvg-logo, tvg-logo-small.</PackageReleaseNotes>
   </PropertyGroup>
 </Project>
