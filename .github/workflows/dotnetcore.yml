@@ -25,18 +25,18 @@ jobs:
         with:
           dotnet-version: 3.0.100
       - name: Build with dotnet
-        run: dotnet restore
-      - name: ls
-        run: ls -la M3uParser
-      - name: Test with dotnet
-        run: dotnet test
+        run: dotnet build --configuration Release
+      # - name: Test with dotnet
+      #   run: dotnet test
       # - name: Codecov
       #   uses: codecov/codecov-action@v1.0.3
       #   with:
       #     token: ${{secrets.CODECOV_TOKEN}}
       - name: Build NuGet Package
         run: dotnet pack M3uParser/m3u-parser.csproj --configuration Release -o NuGetPackages
-      - name: Deploy NuGet Package
-        run: dotnet nuget push M3uParser/NuGetPackages/m3u-parser.1.0.0.nupkg -k ${NUGET_API_KEY} -s https://api.nuget.org/v3/index.json
-        env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+      - name: ls M3uParser
+        run: ls -la M3uParser
+      - name: ls M3uParser.Tests
+        run: ls -la M3uParser.Tests
+      # - name: Deploy NuGet Package
+      #   run: dotnet nuget push M3uParser/NuGetPackages/m3u-parser.1.0.0.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
