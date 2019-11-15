@@ -34,7 +34,7 @@ jobs:
       #     token: ${{secrets.CODECOV_TOKEN}}
       - name: Build NuGet Package
         run: dotnet pack M3uParser/m3u-parser.csproj --configuration Release -o NuGetPackages
-      - name: ls M3uParser/bin
-        run: ls -la M3uParser/bin
+      - name: ls M3uParser/bin/Release
+        run: ls -la M3uParser/bin/Release
       # - name: Deploy NuGet Package
       #   run: dotnet nuget push M3uParser/NuGetPackages/m3u-parser.1.0.0.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
