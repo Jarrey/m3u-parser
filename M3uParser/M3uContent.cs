@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text;
 using M3UParser.Constants;
@@ -10,7 +11,9 @@ namespace M3UParser
 {
     public static class M3uContent
     {
-        public static string ToText(M3uPlaylist playlist)
+        // Currently not implemented 
+        [ExcludeFromCodeCoverage]
+        public static Stream ToStream(M3uPlaylist playlist)
         {
             var sb = new StringBuilder();
 
@@ -20,9 +23,7 @@ namespace M3UParser
             {
                 sb.AppendLine(entry.Uri);
             }
-
-//            sb = sb.Replace(Environment.NewLine, "", sb.Length - 3, 3);
-            return sb.ToString();
+            return new MemoryStream(Encoding.UTF8.GetBytes(sb.ToString() ?? ""));
         }
 
         public static M3uPlaylist GetFromStream(Stream stream)

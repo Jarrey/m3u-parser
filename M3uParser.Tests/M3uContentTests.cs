@@ -36,6 +36,7 @@ namespace M3uParser.Tests
             Assert.Equal("https://localhost1small", content.PlaylistEntries[0].SmallLogo);
             Assert.Equal("1234", content.PlaylistEntries[0].Code);
             Assert.Equal("TV Channel1", content.PlaylistEntries[0].Title);
+            Assert.Equal("udp://@111.222.33.4:1234", content.PlaylistEntries[0].Uri);
         }
         
         [Fact]

@@ -6,20 +6,37 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.0.100
-    - name: Build with dotnet
-      run: dotnet restore
-    - name: ls
-      run: ls -la M3uParser
-    - name: Test with dotnet
-      run: dotnet test
-    - name: Build NuGet Package
-      run: dotnet pack M3uParser/m3u-parser.csproj --configuration Release -o NuGetPackages
-    - name: Deploy NuGet Package
-      run: dotnet nuget push M3uParser/NuGetPackages/m3u-parser.1.0.0.nupkg -k ${NUGET_API_KEY} -s https://api.nuget.org/v3/index.json
-      env:
-        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+      - uses: actions/checkout@v1
+      - name: Sonarscanner for dotnet
+        uses: Secbyte/dotnet-sonarscanner@v1.2
+        with:
+          buildCommand: dotnet build .
+          projectKey: Acidfabric_m3u-parser
+          projectName: m3u-parser
+          sonarOrganisation: CharlieOnAcid
+          verbose: "true"
+          openCoverPaths: "tests/coverage.opencover.xml"
+          coverageExclusions: "**test*.cs"
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.0.100
+      - name: Build with dotnet
+        run: dotnet restore
+      - name: ls
+        run: ls -la M3uParser
+      - name: Test with dotnet
+        run: dotnet test
+      # - name: Codecov
+      #   uses: codecov/codecov-action@v1.0.3
+      #   with:
+      #     token: ${{secrets.CODECOV_TOKEN}}
+      - name: Build NuGet Package
+        run: dotnet pack M3uParser/m3u-parser.csproj --configuration Release -o NuGetPackages
+      - name: Deploy NuGet Package
+        run: dotnet nuget push M3uParser/NuGetPackages/m3u-parser.1.0.0.nupkg -k ${NUGET_API_KEY} -s https://api.nuget.org/v3/index.json
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
