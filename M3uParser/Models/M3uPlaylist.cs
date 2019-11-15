@@ -7,6 +7,6 @@ namespace M3UParser.Models
         /// <summary>
         /// List of playlist entries.
         /// </summary>
-        public List<M3uPlaylistEntry> PlaylistEntries { get; }
+        public List<M3uPlaylistEntry> PlaylistEntries { get; set; }
     }
 }
