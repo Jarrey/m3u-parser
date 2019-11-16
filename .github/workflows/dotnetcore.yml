@@ -1,6 +1,9 @@
 name: .NET Core
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
@@ -34,7 +37,5 @@ jobs:
       #     token: ${{secrets.CODECOV_TOKEN}}
       - name: Build NuGet Package
         run: dotnet pack M3uParser/m3u-parser.csproj --configuration Release
-      - name: ls M3uParser/bin/Release
-        run: ls -la M3uParser/bin/Release
       - name: Deploy NuGet Package
-        run: dotnet nuget push M3uParser/bin/Release/m3u-parser.1.0.1.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
+        run: dotnet nuget push M3uParser/bin/Release/m3u-parser.1.0.2.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
