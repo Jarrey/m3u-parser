@@ -16,6 +16,6 @@ jobs:
       - name: Build with dotnet
         run: dotnet build --configuration Release
       - name: Build NuGet Package
-        run: dotnet pack M3uParser/m3u-parser.csproj --no-build --no-restore /p:PackageVersion=${{GITHUB_REF:10}}
+        run: dotnet pack M3uParser/m3u-parser.csproj -p:Version=${GITHUB_REF##*/v}
       - name: Deploy NuGet Package
-        run: dotnet nuget push M3uParser/bin/Release/m3u-parser.${{GITHUB_REF:10}}.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
+        run: dotnet nuget push M3uParser/bin/Release/m3u-parser.${GITHUB_REF##*/v}.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
