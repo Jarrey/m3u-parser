@@ -3,7 +3,7 @@
     <PackageId>m3u-parser</PackageId>
     <Title>M3U Parser</Title>
     <PackageDescription>Package for parsing m3u playlist</PackageDescription>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>Karolis Arbaciauskas</Authors>
     <Company>Charlie on Acid</Company>
     <TargetFramework>netstandard2.0</TargetFramework>
