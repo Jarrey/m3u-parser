@@ -38,4 +38,4 @@ jobs:
       - name: Build NuGet Package
         run: dotnet pack M3uParser/m3u-parser.csproj --configuration Release
       - name: Deploy NuGet Package
-        run: dotnet nuget push M3uParser/bin/Release/m3u-parser.1.0.2.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
+        run: dotnet nuget push M3uParser/bin/Release/m3u-parser.1.1.0.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json

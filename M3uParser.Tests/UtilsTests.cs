@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using M3UParser.Constants;
+using M3UParser.Models;
 using M3UParser.Utils;
 using Xunit;
 
@@ -11,6 +12,40 @@ namespace M3uParser.Tests
     {
         private static string ReadFile() => File.ReadAllText(
             Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "MockData", "playlist.m3u"));
+        
+        [Fact]
+        public void ShouldChainFullAttributesList()
+        {
+            var m3uPlaylistEntry = new M3uPlaylistEntry
+            {
+                Title = "TVOne",
+                Uri = "http://local",
+                Name = "TvOne",
+                Logo = "http://logo",
+                SmallLogo = "http://local-small-logo",
+                Code = "123",
+                Group = "local",
+                Id = "12"
+            };
+            var title = Helpers.ChainAttributes(m3uPlaylistEntry);
+            Assert.Equal(
+                "#EXTINF:-1 tvg-id=\"12\" tvg-logo=\"http://logo\" tvg-name=\"TvOne\" tvg-logo-small=\"http://local-small-logo\" group-title=\"local\" parent-code=\"123\", TVOne", 
+                title);
+        }
+        
+        [Fact]
+        public void ShouldChainAttributes()
+        {
+            var m3uPlaylistEntry = new M3uPlaylistEntry
+            {
+                Title = "TVOne",
+                Logo = "http://logo"
+            };
+            var title = Helpers.ChainAttributes(m3uPlaylistEntry);
+            Assert.Equal(
+                "#EXTINF:-1 tvg-logo=\"http://logo\", TVOne", 
+                title);
+        }
 
         [Fact]
         public void ShouldGetPlaylistTitle()

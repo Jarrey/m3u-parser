@@ -8,8 +8,14 @@ m3u-parser is free package to parse data from m3u files in .net
 
 `Install-Package m3u-parser`
 
-### Use:
+### Parse data:
 
 ```C#
-M3uPlaylist M3uContent.GetFromStream(Stream stream)
+M3uPlaylist M3uParser.GetFromStream(Stream stream)
+```
+
+### Create stream from object:
+
+```C#
+Stream M3uParser.CreateStream(M3uPlaylist playlistData)
 ```

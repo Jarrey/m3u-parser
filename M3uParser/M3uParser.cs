@@ -1,29 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using System.Text;
 using M3UParser.Constants;
 using M3UParser.Models;
 using M3UParser.Utils;
 
 namespace M3UParser
 {
-    public static class M3uContent
+    public static class M3uParser
     {
-        // Currently not implemented 
-        [ExcludeFromCodeCoverage]
-        public static Stream ToStream(M3uPlaylist playlist)
+        public static Stream CreateStream(M3uPlaylist playlistData)
         {
-            var sb = new StringBuilder();
-
-            sb.AppendLine(Directives.EXTM3U);
-
-            foreach (var entry in playlist.PlaylistEntries)
+            using (var memoryStream = new MemoryStream())
+            using (var streamWriter = new StreamWriter(memoryStream))
             {
-                sb.AppendLine(entry.Uri);
+                streamWriter.WriteLine(Directives.EXTM3U);
+
+                foreach (var entry in playlistData.PlaylistEntries)
+                {
+                    if (string.IsNullOrWhiteSpace(entry.Title))
+                        throw new ArgumentNullException(entry.Title);
+        
+                    if (string.IsNullOrWhiteSpace(entry.Uri))
+                        throw new ArgumentNullException(entry.Uri);
+
+                    var chainAttributes = Helpers.ChainAttributes(entry);
+                    streamWriter.WriteLine(chainAttributes);
+                    streamWriter.WriteLine(entry.Uri);
+                }
+            
+                streamWriter.Flush();
+                memoryStream.Position = 0;
+
+                return new MemoryStream(memoryStream.ToArray(), false);
             }
-            return new MemoryStream(Encoding.UTF8.GetBytes(sb.ToString() ?? ""));
         }
 
         public static M3uPlaylist GetFromStream(Stream stream)
