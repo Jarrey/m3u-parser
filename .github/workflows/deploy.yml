@@ -9,17 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 3.0.100
       - name: Build with dotnet
         run: dotnet build --configuration Release
       - name: Build NuGet Package
         run: dotnet pack M3uParser/m3u-parser.csproj --configuration Release -p:PackageVersion=${GITHUB_REF##*/v}
       - name: Deploy NuGet Package
         run: dotnet nuget push M3uParser/bin/Release/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
-#       - name: Deploy NuGet Package to GitHub
-#         run: dotnet nuget push M3uParser/bin/Release/m3u-parser.${GITHUB_REF##*/v}.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/Acidfabric/index.json
       - name: Deploy NuGet Package to GitHub
         run: curl -vX PUT -u "Acidfabric:${{ secrets.GITHUB_TOKEN }}" -F package=@M3uParser/bin/Release/m3u-parser.${GITHUB_REF##*/v}.nupkg https://nuget.pkg.github.com/Acidfabric/
