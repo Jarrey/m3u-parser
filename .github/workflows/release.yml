@@ -18,9 +18,15 @@ jobs:
       - name: Build NuGet Package
         run: dotnet pack M3uParser/m3u-parser.csproj --configuration Release -p:PackageVersion=${GITHUB_REF##*/v}
       - name: Deploy NuGet Package
-        run: dotnet nuget push M3uParser/bin/Release/m3u-parser.${GITHUB_REF##*/v}.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
+        run: dotnet nuget push M3uParser/bin/Release/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
+#       - name: Deploy NuGet Package to GitHub
+#         run: dotnet nuget push M3uParser/bin/Release/m3u-parser.${GITHUB_REF##*/v}.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/Acidfabric/index.json
+      - name: Setup nuget config for GitHub
+        run: sed 's/GITHUB_TOKEN/${{ secrets.GITHUB_TOKEN }}/g' .nuget.config > nuget.config
       - name: Deploy NuGet Package to GitHub
-        run: dotnet nuget push M3uParser/bin/Release/m3u-parser.${GITHUB_REF##*/v}.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/Acidfabric/index.json
+#         run: curl -vX PUT -u "Acidfabric:${{ secrets.GITHUB_TOKEN }}" -F package=@OpenMedicus.Data.2.6.109.nupkg https://nuget.pkg.github.com/openmedicus/
+        run: dotnet nuget push M3uParser/bin/Release/*.nupkg -s https://nuget.pkg.github.com/Acidfabric/index.json
+
         # run: |
         #   nuget sources Add -Name "GPR" -Source "https://nuget.pkg.github.com/Acidfabric/index.json" -UserName Acidfabric -Password ${{ secrets.GITHUB_TOKEN }}
         #   nuget push M3uParser/bin/Release/m3u-parser.${GITHUB_REF##*/v}.nupkg -Source "GPR"
