@@ -20,6 +20,7 @@ jobs:
       - name: Deploy NuGet Package
         run: dotnet nuget push M3uParser/bin/Release/m3u-parser.${GITHUB_REF##*/v}.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
       - name: Deploy NuGet Package to GitHub
-        run: |
-          nuget sources Add -Name "GPR" -Source "https://nuget.pkg.github.com/Acidfabric/index.json" -UserName Acidfabric -Password ${{ secrets.GITHUB_TOKEN }}
-          nuget push M3uParser/bin/Release/m3u-parser.${GITHUB_REF##*/v}.nupkg -Source "GPR"
+        run: dotnet nuget push M3uParser/bin/Release/m3u-parser.${GITHUB_REF##*/v}.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/Acidfabric/index.json
+        # run: |
+        #   nuget sources Add -Name "GPR" -Source "https://nuget.pkg.github.com/Acidfabric/index.json" -UserName Acidfabric -Password ${{ secrets.GITHUB_TOKEN }}
+        #   nuget push M3uParser/bin/Release/m3u-parser.${GITHUB_REF##*/v}.nupkg -Source "GPR"
