@@ -22,4 +22,4 @@ jobs:
 #       - name: Deploy NuGet Package to GitHub
 #         run: dotnet nuget push M3uParser/bin/Release/m3u-parser.${GITHUB_REF##*/v}.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/Acidfabric/index.json
       - name: Deploy NuGet Package to GitHub
-        run: curl -vX PUT -u "Acidfabric:${{ secrets.GITHUB_TOKEN }}" -F package=@M3uParser/bin/Release/*.nupkg https://nuget.pkg.github.com/Acidfabric/
+        run: curl -vX PUT -u "Acidfabric:${{ secrets.GITHUB_TOKEN }}" -F package=@M3uParser/bin/Release/m3u-parser.${GITHUB_REF##*/v}.nupkg https://nuget.pkg.github.com/Acidfabric/
