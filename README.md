@@ -19,4 +19,3 @@ M3uPlaylist M3uParser.GetFromStream(Stream stream)
 ```C#
 Stream M3uParser.CreateStream(M3uPlaylist playlistData)
 ```
-
