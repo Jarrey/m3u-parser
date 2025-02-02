@@ -39,22 +39,21 @@ namespace M3UParser.Utils
         
         public static string GetTitle(string line)
         {
-            if (string.IsNullOrWhiteSpace(line)) throw new ArgumentException("Text input could not be empty or null.");
+            if (string.IsNullOrWhiteSpace(line)) return null;
             var titleIndex = line.IndexOf(',');
-            if (titleIndex == -1) throw new Exception($"Failed to find title in string: {line}");
+            if (titleIndex == -1) return null;
 
             return line.Substring(titleIndex + 1).Trim();
         }
 
         public static string GetProperties(string line, string property)
         {
-            if (string.IsNullOrWhiteSpace(line)) throw new ArgumentException("Text input could not be empty or null.");
+            if (string.IsNullOrWhiteSpace(line)) return null;
 
             try
             {
                 if (!line.Contains(property))
-                    throw new ArgumentException(
-                        $"Property {property} not found in line: {line}.");
+                    return null;
 
                 var propertyStartIndex = line.Substring(line.IndexOf(property) + property.Length + 2);
                 var propertyLastIndex = propertyStartIndex.IndexOf("\"");
